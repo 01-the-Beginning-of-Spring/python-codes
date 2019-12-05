@@ -20,4 +20,5 @@
 章节 | 介绍 | 文件
 ----|----|----
 Python3 基础语法|介绍基础语法|[/runoob/intro_001.py](/src/runoob/intro_001.py)
-Python3 基本数据类型|介绍基础类型|[/runoob/intro_002.py](/src/runoob/intro_002.py)
+Python3 基本数据类型1|介绍基础类型(特殊赋值方法，Number，字符串及其切片)|[/runoob/intro_002.py](/src/runoob/intro_002.py)
+Python3 基本数据类型2|介绍基础类型(list, tuple, set)/[/runoob/intro_003.py](/src/runoob/intro_003.py)

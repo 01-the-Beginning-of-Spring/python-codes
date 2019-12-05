@@ -19,5 +19,5 @@
 #### 章节内容
 章节 | 介绍 | 文件
 ----|----|----
-Python3 基础语法|介绍基础语法|[runoob/intro_001.py](/src/runoob/intro_001.py)
-
+Python3 基础语法|介绍基础语法|[/runoob/intro_001.py](/src/runoob/intro_001.py)
+Python3 基本数据类型|介绍基础类型|[/runoob/intro_002.py](/src/runoob/intro_002.py)

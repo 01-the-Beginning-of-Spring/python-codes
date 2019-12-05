@@ -14,7 +14,7 @@ __sep_clr_red = '\033[91m'  # 分割行字体颜色，红色
 __sep_clr_end = '\033[0m'  # 字体颜色设置结束符
 
 
-# 计数器类
+# 表示函数计数器的类
 class __CounterForFunc(object):
     __func_map = dict()
 
@@ -44,14 +44,17 @@ def log_simple(func):
 
     __counter_func = __CounterForFunc(func)  # 局部计数器
 
-    @wraps(func)  # make original '__name__' is still original name
-    def wrapper(*args, **kwargs):
+    def __check_counter():
         global __counter_for_logger  # 函数内部修改全局变量
         # nonlocal __counter_func  # 函数内部修改父级作用域的局部变量, 这里并未修改，因此可以不用
         if __counter_for_logger == 0:  # 如果全局计数器重置，则局部计数器自动重置
             __counter_func.reset_all_counter()
         __counter_func.increment_counter(func)
         __counter_for_logger += 1
+
+    @wraps(func)  # make original '__name__' is still original name
+    def wrapper(*args, **kwargs):
+        __check_counter()
         line = __sep_clr_purple + '#' + str(__counter_for_logger) \
                + ' - [' + func.__name__ + ']-' + str(__counter_func.get_counter(func)) \
                + ' ' + ('=' * 30) + __sep_clr_end
@@ -77,14 +80,17 @@ def log_advanced(sep: str = '=', n: int = 30):
     def decorator(func):
         __counter_func = __CounterForFunc(func)  # 局部计数器
 
-        @wraps(func)
-        def wrapper(*args, **kwargs):
+        def __check_counter():
             global __counter_for_logger
             # nonlocal __counter_func
             if __counter_for_logger == 0:  # 如果全局计数器重置，则局部计数器自动重置
                 __counter_func.reset_all_counter()
             __counter_for_logger += 1
             __counter_func.increment_counter(func)
+
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            __check_counter()
             line = __sep_clr_purple + '#' + str(__counter_for_logger) \
                    + ' - [' + func.__name__ + ']-' + str(__counter_func.get_counter(func)) \
                    + ' ' + (sep * n) + __sep_clr_end
@@ -99,7 +105,7 @@ def log_advanced(sep: str = '=', n: int = 30):
 
 
 # 正常函数，不是装饰器
-def reset_segment(msg: str = None, sep: str = '=', sep_cnt: int = 60) -> None:
+def new_segment(msg: str = None, sep: str = '=', sep_cnt: int = 60) -> None:
     """
     重置log计数器, 并打印
 

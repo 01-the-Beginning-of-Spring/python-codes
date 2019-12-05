@@ -6,7 +6,8 @@
 #### 2. 学习资料
 1. Python官方网站：https://www.python.org/  
 2. Python3.6.3中文文档：https://www.runoob.com/manual/pythontutorial3/docs/html/  
-3. Python 3教程：https://www.runoob.com/python3/python3-tutorial.html  
+3. Python 3教程：https://www.runoob.com/python3/python3-tutorial.html
+4. 廖雪峰的Python教程：https://www.liaoxuefeng.com/wiki/1016959663602400  
 * _本项目教程以#3为主_
 
 #### 3. IDE及环境配置

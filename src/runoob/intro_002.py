@@ -51,6 +51,14 @@ def show_func_name(func):
         print('输入参数不是函数：[', func, ']')
 
 
+# 通过打印字符串详情，查看字符串具体内容
+@log_simple
+def check_str(cmt, vstr):
+    print(cmt, "=", "[", end='')
+    print(vstr, end='')
+    print("]")
+
+
 if __name__ == '__main__':
     ## 1
     new_segment('python中特殊的赋值方法')
@@ -87,3 +95,42 @@ if __name__ == '__main__':
     var_int_add_true = var_int_original + True
     var_int_add_false = var_int_original + False
     check_and_show_var_list([(var_int_original, int), (var_int_add_true, int), (var_int_add_false, int)])  # 7
+
+    ## 3
+    new_segment("字符串")
+    # Python中的字符串不能改变。
+    # Python中的字符串用单引号 ' 或双引号 " 括起来，同时使用反斜杠 \ 转义特殊字符
+    s1 = 'abcdefg' + 'ABCDEFG'  # 加号 + 是字符串的连接符
+    s2 = "ABCDEFG " * 2  # 星号 * 表示复制当前字符串，紧跟的数字为复制的次数
+    s3 = 'ABCD\tABCD'
+    s4 = r'ABCD\tABCD'  # 反斜杠可以用来转义，使用r可以让反斜杠不发生转义
+    s5 = r"ABCD\tABCD"
+    s6 = '''ABCD\tABCD
+    一个可换行的字符串'''
+    s7 = """ABCD\tABCD
+    另一个可换行的字符串"""
+    s8 = r'''ABCD\tABCD
+    ABCD'''
+    s9 = r"""ABCD\tABCD
+    ABCD""" + 'XYZ'
+    check_str('s1', s1)  # 1
+    check_str('s2', s2)  # 2
+    check_str('s3', s3)  # 3
+    check_str('s4', s4)  # 4
+    check_str('s5', s5)  # 5
+    check_str('s6', s6)  # 6
+    check_str('s7', s7)  # 7
+    check_str('s8', s8)  # 8
+    check_str('s9', s9)  # 9
+
+    ##4
+    new_segment("字符串切片")
+    # 字符串切片的格式是：变量[头下标:尾下标:步长]，其中步长可省略
+    # Python中的字符串有两种索引方式，从左往右以0开始，从右往左以-1开始
+    s = 'ABCDEF'
+    print(s, s[:])
+    print(s[-2], s[-1], s[0], s[1], s[2], sep=',')
+    print(s[-2:], s[-1:], s[0:], s[1:], s[2:], sep=',')
+    print(s[:-2], s[:-1], s[:0], s[:1], s[:2], sep=',')
+    print(s[::1], s[::2], s[::3], sep=',')
+    print(s[1:4:1], s[1:4:2], sep=',')

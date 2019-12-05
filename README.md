@@ -18,3 +18,5 @@ PyCharm: https://www.jetbrains.com/pycharm/
 ├── doc .......................文档(主要是对src目录的内容进行说明)
 └── src .......................源文件(根据教程3编写的程序)
 ```
+#### 5. Python 文化
+> ['Life is short, you need python'](https://sebsauvage.net/python/)

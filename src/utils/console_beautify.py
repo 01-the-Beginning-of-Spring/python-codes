@@ -14,6 +14,27 @@ __sep_clr_red = '\033[91m'  # 分割行字体颜色，红色
 __sep_clr_end = '\033[0m'  # 字体颜色设置结束符
 
 
+# 计数器类
+class __CounterForFunc(object):
+    __func_map = dict()
+
+    def __init__(self, func):
+        self.__class__.__func_map[func] = 0
+
+    def reset_all_counter(self):
+        """ 重置所有函数的计数器 """
+        for k in self.__class__.__func_map.keys():
+            self.__class__.__func_map[k] = 0
+
+    def increment_counter(self, func):
+        """ 函数对应计数器自增"""
+        self.__class__.__func_map[func] += 1
+
+    def get_counter(self, func):
+        """ 取得函数对应的计数器 """
+        return self.__class__.__func_map[func]
+
+
 # 不带参数的装饰器示例
 def log_simple(func):
     """
@@ -21,19 +42,18 @@ def log_simple(func):
     格式：#<程序执行总次数> - [<执行函数的名称>]-<该函数执行次数> <输出30个等号（=）>
     """
 
-    __counter_func = 0  # 局部计数器
-
+    __counter_func = __CounterForFunc(func)  # 局部计数器
 
     @wraps(func)  # make original '__name__' is still original name
     def wrapper(*args, **kwargs):
         global __counter_for_logger  # 函数内部修改全局变量
-        nonlocal __counter_func  # 函数内部修改父级作用域的局部变量
+        # nonlocal __counter_func  # 函数内部修改父级作用域的局部变量, 这里并未修改，因此可以不用
         if __counter_for_logger == 0:  # 如果全局计数器重置，则局部计数器自动重置
-            __counter_func = 0
-        __counter_func += 1
+            __counter_func.reset_all_counter()
+        __counter_func.increment_counter(func)
         __counter_for_logger += 1
         line = __sep_clr_purple + '#' + str(__counter_for_logger) \
-               + ' - [' + func.__name__ + ']-' + str(__counter_func) \
+               + ' - [' + func.__name__ + ']-' + str(__counter_func.get_counter(func)) \
                + ' ' + ('=' * 30) + __sep_clr_end
         print(line)
         r = func(*args, **kwargs)
@@ -55,18 +75,18 @@ def log_advanced(sep: str = '=', n: int = 30):
     """
 
     def decorator(func):
-        __counter_func = 0  # 局部计数器
+        __counter_func = __CounterForFunc(func)  # 局部计数器
 
         @wraps(func)
         def wrapper(*args, **kwargs):
             global __counter_for_logger
-            nonlocal __counter_func
+            # nonlocal __counter_func
             if __counter_for_logger == 0:  # 如果全局计数器重置，则局部计数器自动重置
-                __counter_func = 0
+                __counter_func.reset_all_counter()
             __counter_for_logger += 1
-            __counter_func += 1
+            __counter_func.increment_counter(func)
             line = __sep_clr_purple + '#' + str(__counter_for_logger) \
-                   + ' - [' + func.__name__ + ']-' + str(__counter_func) \
+                   + ' - [' + func.__name__ + ']-' + str(__counter_func.get_counter(func)) \
                    + ' ' + (sep * n) + __sep_clr_end
             print(line)
             r = func(*args, **kwargs)

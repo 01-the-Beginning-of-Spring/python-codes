@@ -3,10 +3,14 @@
 # @Time 2019-11-07 01:17
 #
 
+from utils.console_beautify import *  #导入外部工具包
+
+# 初学者对以下装饰器可以不用理会，去掉后函数也是一样的执行结果
+
 #1 python保留字
-import keyword
+@log_simple # 不带参数的装饰器
 def print_keywords():
-    print("\n#1")
+    import keyword
     # 打印所有关键字
     print(keyword.kwlist)
     # 判断一个字符串是否是关键字
@@ -15,24 +19,24 @@ def print_keywords():
     print(keyword.iskeyword('main'))
 
 #2 多行语句
+@log_advanced() # 带参数的装饰器，使用默认参数
 def multi_line():
-    print("\n#2")
     var = 1 + \
         2 + \
         4
     print(var)
 
 #3 基本类型
+@log_advanced()
 def type_basic():
-    print("\n#3")
     print(type(1))
     print(type(1.0))
     print(type(True))
     print(type(1+2j))
 
 #4 字符串
+@log_advanced()
 def type_str():
-    print("\n#4")
     str = 'Runoob'
     print(str)  # 输出字符串，以下四行俗称"切片"
     print(str[0:-1]) # 输出第一个到倒数第二个的所有字符
@@ -51,15 +55,15 @@ def type_str():
     print(str)
 
 #5 用户输入输出（注意这里：需要在控制台输入文字，然后程序才能继续，否则程序会一直暂停在那里）
+@log_advanced()
 def user_input():
-    print("\n#5")
     user_str = input("请在这里输入：")
     print("你输入的是：", user_str, end="") #不换行输出
     print() #输出空行
 
 #6 一行多条语句
+@log_advanced()
 def multi_statement():
-    print("\n#6")
     import sys; x = 'python-string'; sys.stdout.write(x + '\n')
 
 

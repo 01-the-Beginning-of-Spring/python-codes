@@ -1,24 +1,28 @@
-### Python 3 教程
+## Python 3 教程
 >网址：https://www.runoob.com/python3/python3-tutorial.html
 
-#### 技术风险
-> Python 功能强大，但相关的技术也有风险。  
-> **忠告：不要用爬虫技术**  
->>1.爬虫容易搞坏网站。（刑法二百八十六条，破坏计算机信息系统罪）  
->>2.爬虫很容易采集个人信息。（网络信息安全法，GDPR等法律相关条款）  
->>3.爬虫很容易采集商业机密和国家机密等。  
->
-> **参考**  
->>1.[谈谈爬虫背后的法律风险](https://www.cnblogs.com/binyue/p/11719854.html)  
->>2.[爬虫与反爬虫：一个很不阳光的行业！一文揭秘那些你不知道的套路](http://www.sohu.com/a/217594662_185201)  
->>3.[一个爬虫引发的案件：非法获取公民个人信息 情节严重可判刑](http://www.mpaypass.com.cn/news/201910/17091741.html)
->
-> **建议**  
->> 如果想学习爬虫技术，就找个“合适(非法的)”的网站练手。  
-
-#### 章节内容
-章节 | 介绍 | 文件
-----|----|----
-Python3 基础语法|介绍基础语法|[/runoob/intro_001.py](/src/runoob/intro_001.py)
-Python3 基本数据类型1|介绍基础类型(特殊赋值方法，Number，字符串及其切片)|[/runoob/intro_002.py](/src/runoob/intro_002.py)
-Python3 基本数据类型2|介绍基础类型(list, tuple, set)/[/runoob/intro_003.py](/src/runoob/intro_003.py)
+### python 3 介绍
+- [基础概要](/src/intro/intro01_overview.py)
+- [变量和赋值](/src/intro/intro02_variable_assignment.py)
+- [控制台输入输出](/src/intro/intro03_console_io.py)
+- [不可变类型 Number 数字](/src/intro/intro_datatype_number.py)
+- [不可变类型 String 字符串](/src/intro/intro_datatype_string.py)
+- [不可变类型 Tuple 元组](/src/intro/intro_datatype_tuple.py)
+- [可变类型 List 列表](/src/intro/intro_datatype_list.py)
+- [可变类型 Dictionary 字典](/src/intro/intro_datatype_dict.py)
+- [可变类型 Set 集合](/src/intro/intro_datatype_set.py)
+- [控制流：条件 if..elif..else](/src/intro/intro_flow_conditions.py)
+- [控制流：循环 for, while, do..while](/src/intro/intro_flow_loop.py)
+- [控制流：特殊语句 pass](/src/intro/intro_flow_special_statement.py)
+- [函数：基础](/src/intro/intro_func_basic.py)
+- [函数：迭代器与生成器](/src/intro/intro_func_itr_yield.py)
+- [函数：装饰器](/src/intro/intro_func_decorator.py)
+- [模块](/src/intro/intro_module.py)
+- [面向对象编程](/src/intro/intro_oop.py)
+- [错误和异常](/src/intro/intro_errors_exceptions.py)
+- [命名空间和作用域](/src/intro/intro_namespace_scope.py)
+- [文件和目录](/src/intro/intro_files_directories.py)
+- [数据结构](/src/intro/into_data_structure.py)
+- [多线程](/src/intro/intro_thread.py)
+- [日期与时间](/src/intro/intro_date_and_time.py)
+- [内置函数](/src/intro/intro_build_in_func.py)
